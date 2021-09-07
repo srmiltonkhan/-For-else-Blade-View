@@ -1,0 +1,30 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::get('/',[App\Http\Controllers\HomeController::class,'ShowHome']);
+
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class HomeController extends Controller
+{
+    function ShowHome(){
+        $data = array();
+        return view('Home',['DataKey'=>$data]);
+    }
+}
+
+
+
+
+@forelse($DataKey as $CountryName)
+ <li>{{$CountryName}}</li>
+@empty
+ <p>No Data Found in the System</p>
+@endforelse
